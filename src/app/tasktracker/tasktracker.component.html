@@ -1,0 +1,50 @@
+<div class="max-w mx-auto mt-10 p-6 bg-white space-y-6 rounded-xl shadow-lg">
+    <!-- task input -->
+    <div class="flex">
+        <input 
+            [(ngModel)]="taskText"
+            (keyup.enter)="addTask()"
+            type="text"
+            placeholder="add a new task..."
+            class="flex-1 p-3 border rounded-l-md focus:outline-none focus:ring-ring-blue-500">
+        <button 
+            (click)="addTask()"
+            class="bg-blue-700 text-white px-4 py-2 rounded-r-lg hover:bg-blue-800">
+            Add
+        </button>
+    </div>
+     <!-- task list -->
+    <ul class="space-y-2 max-h-64">
+        <li *ngFor="let task of filteredTasks()" class="flex items-center justify-between p-3 bg-gray-100 rounded-lg">
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" [(ngModel)]="task.completed">
+                <span [ngClass]="{
+                    'line-through text-gray-400 italic': task.completed,
+                    'text-gray-800': !task.completed
+                }">
+                {{ task.title }}
+                </span>
+            </div>
+            <button (click)="deleteTask(task.id)" class="text-red hover:text-red-700">&times;</button>
+        </li>
+    </ul>
+
+    <!-- filter btns -->
+    <div>
+        <button (click)="setFilter('all')"
+            [ngClass]="{'bg-blue-700 text-white': filter === 'all'}"
+            class="px-4 py-2 rounded hover:bg-blue-800">
+            All
+        </button>
+        <button (click)="setFilter('all')"
+            [ngClass]="{'bg-blue-700 text-white': filter === 'active'}"
+            class="px-4 py-2 rounded hover:bg-blue-800">
+            Active
+        </button>
+        <button (click)="setFilter('all')"
+            [ngClass]="{'bg-blue-700 text-white': filter === 'completed'}"
+            class="px-4 py-2 rounded hover:bg-blue-800">
+            Completed
+        </button>
+    </div>
+</div>
