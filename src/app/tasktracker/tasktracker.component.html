@@ -18,7 +18,7 @@
     </div>
      <!-- task list -->
     <ul class="space-y-2 max-h-64">
-        <li *ngFor="let task of filteredTasks()" class="flex items-center justify-between p-3 bg-gray-100 rounded-lg">
+        <li *ngFor="let task of filteredTasks()" class="flex items-center justify-between text-sm md:text-base p-3 bg-gray-100 rounded-lg">
             <div class="flex items-center space-x-2">
                 <input type="checkbox" [(ngModel)]="task.completed">
                 <span [ngClass]="{
@@ -28,7 +28,7 @@
                     {{ task.title }}
                 </span>
             </div>
-            <button (click)="deleteTask(task.id)" class="text-red hover:text-red-700">&times;</button>
+            <button (click)="deleteTask(task.id)" class="text-white text-sm bg-red-700 px-2 py-1 rounded-lg hover:bg-red-800">Delete</button>
         </li>
     </ul>
 

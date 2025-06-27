@@ -49,6 +49,8 @@ export class TasktrackerComponent {
   }
 
   deleteTask(id: number) {
-    this.tasks = this.tasks.filter(task => task.id !== id)
+    if(confirm('are you sure to delete this task?')) {
+      this.tasks = this.tasks.filter(task => task.id !== id)
+    }
   }
 }
