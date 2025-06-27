@@ -21,7 +21,7 @@ export class TasktrackerComponent {
   tasks: Task[] = [];
   filter: 'all' | 'active' | 'completed' = 'all';
 
-  addTask() {
+  addNewTask() {
     const title = this.taskText.trim();
     if(title) {
       this.tasks.push({
